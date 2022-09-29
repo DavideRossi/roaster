@@ -481,7 +481,7 @@ public abstract class JavaSourceImpl<O extends JavaSource<O>> implements JavaSou
    {
       if (resolvers == null)
       {
-         resolvers = new ArrayList<>();
+         resolvers = Collections.synchronizedList(new ArrayList<>());
          for (WildcardImportResolver r : ServiceLoader.load(WildcardImportResolver.class, getClass().getClassLoader()))
          {
             resolvers.add(r);
